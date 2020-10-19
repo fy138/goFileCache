@@ -63,7 +63,7 @@ func main() {
 	time.Sleep(time.Second * 5)
 	err = fc.GetCache(k2, 4, scinfo)
 	if err != nil {
-		log.Print(err)
+		log.Print(err) //expired
 	}
 }	
   ```
