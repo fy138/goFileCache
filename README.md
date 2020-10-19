@@ -3,7 +3,6 @@ a  file cache for golang use gob encode
 
 ## Example
 ```go
-
 package main
 
 import (
@@ -31,11 +30,14 @@ func main() {
 	//key 1
 	k1 := "myinfo"
 	d := &MyInfo{Name: "fy", Age: 100}
+	//store data to disk
 	err := fc.SetCache(k1, d)
 	if err != nil {
 		log.Print(err)
 	}
+	//get data from cache
 	mydata := &MyInfo{}
+	//GetCache( key, expire time(seconds),data)
 	err = fc.GetCache(k1, 7200, mydata)
 	if err != nil {
 		log.Print(err)
@@ -63,7 +65,5 @@ func main() {
 	if err != nil {
 		log.Print(err)
 	}
-}
-
-	
+}	
   ```
