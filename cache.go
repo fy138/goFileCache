@@ -2,7 +2,6 @@ package goFileCache
 
 import (
 	"errors"
-	"log"
 	"time"
 
 	//"path"
