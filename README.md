@@ -4,7 +4,30 @@ a  file cache for golang use gob encode
 ## Example
 ```go
 
-	fc := NewFCache("./tmp/")
+package main
+
+import (
+	"log"
+	"time"
+
+	fc "github.com/fy138/goFileCache"
+)
+
+type MyInfo struct {
+	Name string
+	Age  int
+}
+type School struct {
+	SchoolName string
+	Studen     struct {
+		Name string
+		Age  int
+	}
+}
+
+func main() {
+	fc := fc.NewFileCache("./tmp/")
+
 	//key 1
 	k1 := "myinfo"
 	d := &MyInfo{Name: "fy", Age: 100}
@@ -22,7 +45,7 @@ a  file cache for golang use gob encode
 	//key2
 	k2 := "schoolinfo"
 	si := &School{SchoolName: "myschool"}
-	si.Studen.Name = "Ok"
+	si.Studen.Name = "test"
 	si.Studen.Age = 10
 	err = fc.SetCache(k2, si)
 	if err != nil {
@@ -34,5 +57,13 @@ a  file cache for golang use gob encode
 		log.Print(err)
 	}
 	log.Printf("%s,%s=>%d", scinfo.SchoolName, si.Studen.Name, si.Studen.Age)
+	//expired
+	time.Sleep(time.Second * 5)
+	err = fc.GetCache(k2, 4, scinfo)
+	if err != nil {
+		log.Print(err)
+	}
+}
+
 	
   ```
