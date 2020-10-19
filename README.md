@@ -1,8 +1,9 @@
 # goFileCache
 a  file cache for golang use gob encode
 
-example:
-`
+## Example
+```go
+
 	fc := NewFCache("./tmp/")
 	//key 1
 	k1 := "myinfo"
@@ -33,4 +34,5 @@ example:
 		log.Print(err)
 	}
 	log.Printf("%s,%s=>%d", scinfo.SchoolName, si.Studen.Name, si.Studen.Age)
-  `
+	
+  ```
